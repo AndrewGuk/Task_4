@@ -1,5 +1,6 @@
 ﻿using System;
 using static System.Console;
+using static System.Threading.Thread;
 
 namespace Tetris
 {
@@ -43,14 +44,16 @@ namespace Tetris
                 if (i == place.GetLength(0))
                 {
                     i = 0;
+                    vectorX = random.Next(0, place.GetLength(1));
                 }
                 place[i, vectorX] = block;
                 Game();
                 place[i, vectorX] = shablon;
                 
+
             }
 
-            
+
             void Game()
             {
                 for (int i = 0; i < place.GetLength(0); i++)
@@ -72,7 +75,8 @@ namespace Tetris
                     }
                 }
                 Write("$$");
-                ReadLine();
+                //ReadLine();
+                Sleep(1000);
                 Clear();
             }
 
