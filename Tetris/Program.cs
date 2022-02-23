@@ -13,7 +13,7 @@ namespace Tetris
             string shablon = "    ";
             string block = "[][]";
             //создаем место в которое генерируется куб
-            int vectorX = random.Next(0, place.GetLength(1));
+            int vectorX; //= random.Next(0, place.GetLength(1));
             int valueShablon = shablon.Length;
 
             for (int i = 0; i < place.GetLength(0); i++)
@@ -39,22 +39,47 @@ namespace Tetris
             ReadLine();
             Clear();
 
+            //Рабочий код, с падающим
+
+            //for (int i = 0; ; i++)
+            //{
+            //    if (i == place.GetLength(0))
+            //    {
+            //        i = 0;
+            //        vectorX = random.Next(0, place.GetLength(1));
+            //    }
+            //    place[i, vectorX] = block;
+            //    PlayingField();
+            //    place[i, vectorX] = shablon;
+            //}
+
+            //Конец кода
             for (int i = 0; ; i++)
             {
                 if (i == place.GetLength(0))
-                {
                     i = 0;
-                    vectorX = random.Next(0, place.GetLength(1));
+                vectorX = random.Next(0, place.GetLength(1));
+
+                for (int j = 0; j < place.GetLength(0); j++)
+                {
+                    place[j, vectorX] = block;
+                    PlayingField();
+                    if (j+1 == place.GetLength(0))
+                    {
+                        break;
+                    }
+                    else if(place[j+1,vectorX] == block)
+                    {
+                        break;
+                    }
+                    place[j, vectorX] = shablon;
                 }
-                place[i, vectorX] = block;
-                Game();
-                place[i, vectorX] = shablon;
-                
-
             }
+            
+            
+            
 
-
-            void Game()
+            void PlayingField()
             {
                 for (int i = 0; i < place.GetLength(0); i++)
                 {
@@ -79,7 +104,14 @@ namespace Tetris
                 Sleep(1000);
                 Clear();
             }
-
+            void AddNewObject(int x)
+            {
+                if (x == 3)
+                {
+                    vectorX = random.Next(0, place.GetLength(1));
+                    place[0, vectorX] = block;
+                }
+            }
 
 
 
@@ -107,7 +139,7 @@ namespace Tetris
             //}
             //Write("$$");
             //WriteLine();
-
+            //КОНЕЦ ТАБЛИЦЫ
 
 
 
