@@ -35,32 +35,46 @@ namespace Tetris
                 }
             }
             Write("$$");
-            WriteLine();
+            ReadLine();
+            Clear();
 
-            WriteLine();
-            place[0, vectorX] = block;
-            for (int i = 0; i < place.GetLength(0); i++)
+            for (int i = 0; ; i++)
             {
-                Write("$$");
-                for (int j = 0; j < place.GetLength(1); j++)
+                if (i == place.GetLength(0))
                 {
-                    Write($"{place[i, j]}");
+                    i = 0;
+                }
+                place[i, vectorX] = block;
+                Game();
+                place[i, vectorX] = shablon;
+                
+            }
+
+            
+            void Game()
+            {
+                for (int i = 0; i < place.GetLength(0); i++)
+                {
+                    Write("$$");
+                    for (int j = 0; j < place.GetLength(1); j++)
+                    {
+                        Write($"{place[i, j]}");
+                    }
+                    Write("$$");
+                    WriteLine();
                 }
                 Write("$$");
-                WriteLine();
-            }
-            Write("$$");
-            for (int i = 0; i < place.GetLength(1); i++)
-            {
-                for (int j = 0; j < valueShablon; j++)
+                for (int i = 0; i < place.GetLength(1); i++)
                 {
-                    Write("$");
+                    for (int j = 0; j < valueShablon; j++)
+                    {
+                        Write("$");
+                    }
                 }
+                Write("$$");
+                ReadLine();
+                Clear();
             }
-            Write("$$");
-            WriteLine();
-
-
 
 
 
