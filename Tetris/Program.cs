@@ -1,9 +1,6 @@
 ﻿using System;
 using static System.Console;
 using static System.Threading.Thread;
-using System.Text;
-using System.Timers;
-using System.Diagnostics;
 
 namespace Tetris
 {
