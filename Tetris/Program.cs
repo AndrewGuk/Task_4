@@ -64,24 +64,28 @@ namespace Tetris
             {
                 for (int i = 0; i < place.GetLength(0); i++)
                 {
-                    Write("$$");
+                    ForegroundColor = ConsoleColor.DarkRed;
+                    Write("||");
                     for (int j = 0; j < place.GetLength(1); j++)
                     {
+                        ForegroundColor = ConsoleColor.Green;
                         Write($"{place[i, j]}");
                     }
-                    Write("$$");
+                    ForegroundColor = ConsoleColor.DarkRed;
+                    Write("||");
                     WriteLine();
                 }
-                Write("$$");
+                Write("##");
                 for (int i = 0; i < place.GetLength(1); i++)
                 {
                     for (int j = 0; j < valueShablon; j++)
                     {
-                        Write("$");
+                        Write("#");
                     }
                 }
-                Write("$$");
+                Write("##");
                 CheckAndClean();
+                ResetColor();
                 Sleep(500);
                 Clear();
             }
@@ -117,22 +121,22 @@ namespace Tetris
             {
                 for (int i = 0; i < place.GetLength(0); i++)
                 {
-                    Write("$$");
+                    Write("||");
                     for (int j = 0; j < place.GetLength(1); j++)
                     {
                         place[i, j] = shablon;
                         Write($"{place[i, j]}");
                     }
-                    Write("$$");
+                    Write("||");
                     WriteLine();
                 }
-                Write("$$");
+                Write("##");
                 for (int i = 0; i < place.GetLength(1); i++)
                 {
                     for (int j = 0; j < valueShablon; j++)
-                        Write("$");
+                        Write("#");
                 }
-                Write("$$");
+                Write("##");
                 Clear();
             }
             void StartGame()
